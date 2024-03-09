@@ -5,7 +5,7 @@ type ModalProps = {
     buttonLabel: string
 }
 
-const GameRules = ({ buttonLabel }: ModalProps) => {
+const GameRules: React.FC<ModalProps> = (props) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleModal = () => {
@@ -15,7 +15,7 @@ const GameRules = ({ buttonLabel }: ModalProps) => {
     return (
         <>
             <button onClick={toggleModal}>
-                {buttonLabel}
+                {props.buttonLabel}
             </button>
             {isOpen && (
                 <div className="overlay">
