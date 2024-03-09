@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import './gemeRoules.css'
 
 type ModalProps = {
     buttonLabel: string
@@ -22,7 +23,7 @@ const GameRules: React.FC<ModalProps> = (props) => {
                     <div className="modal">
                         <h1>遊び方</h1>
                         <p>タイピングしろ</p>
-                        <button onClick={toggleModal}>閉じる</button>
+                        <button className="closeBtn" onClick={toggleModal}>閉じる</button>
                     </div>
                 </div>
             )}
