@@ -1,12 +1,15 @@
 import React from 'react'
+import Link from 'next/link'
 
 const CourseSelection = () => {
   return (
     <>
       <div>CourseSelection</div>
-      <button>easy</button>
-      <button>nomal</button>
-      <button>hard</button>
+      <Link href='/game-start'>
+        <button>easy</button>
+        <button>nomal</button>
+        <button>hard</button>
+      </Link>
     </>
   )
 }
