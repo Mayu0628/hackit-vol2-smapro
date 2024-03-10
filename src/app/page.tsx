@@ -1,5 +1,5 @@
 'use client'
-import GameRules from "./game-rules/page";
+import GameRules from "./game-rules/gameRoules";
 import Link from "next/link";
 
 export default function Home() {
