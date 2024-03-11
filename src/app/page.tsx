@@ -1,19 +1,15 @@
 'use client'
-import { useRouter } from "next/navigation"
-
-import GameRules from "./game-rules/page";
+import GameRules from "./game-rules/gameRoules";
+import Link from "next/link";
 
 export default function Home() {
-
-  const router = useRouter();
-
   return (
     <>
       <h1>top</h1>
       <div>
-        <button onClick={() => router.push('/course-selection')}>
-          コース選択
-        </button>      
+        <Link href='/course-selection'>
+          <button>コース選択</button>
+        </Link>
         <GameRules buttonLabel="遊び方"/>
       </div>
     </>
