@@ -1,8 +1,17 @@
+import { examinations } from '@/types';
 import React from 'react'
 
-const Typingdisplay = () => {
+interface examProps {
+  exams: examinations;
+}
+const Typingdisplay = ({ exams }: examProps) => {
   return (
-    <div>Typingdisplay</div>
+    <div>
+      <li
+        key={exams.id}>
+          <span>{exams.text}</span>
+      </li>
+    </div>
   )
 }
 
