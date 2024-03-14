@@ -29,7 +29,7 @@ const QuizGame = () => {
       setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length)
       setSelectedOptionText('')
       setShowAnswer(false)
-    }, 5000)
+    }, 1000)
   }
 
   if (currentQuestionIndex >= questions.length) {

@@ -1,7 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import QuizData from '@/app/components/GameScreen/Quiz/QuizData'
+import Select from '@/app/components/GameScreen/Quiz/QuizData'
+import Timescount from '@/app/components/playGame/Timescount'
+import Answercount from '../components/playGame/Answercount'
+import Typingdisplay from '../components/playGame/Typingdisplay'
 
 const GameStart = () => {
   const [isActive, setIsActive] = useState(false)
@@ -26,7 +29,13 @@ const GameStart = () => {
   return (
     <div>
       {isActive ? (
-        <QuizData />
+        <li>
+          <Answercount />
+          <Timescount initialCount={40} />
+          <Typingdisplay />
+          <Select />
+        </li>
+        
       ) : (
         <div>
           <p>説明</p>

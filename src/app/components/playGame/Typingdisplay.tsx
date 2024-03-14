@@ -4,13 +4,11 @@ import React from 'react'
 interface examProps {
   exams: examinations;
 }
-const Typingdisplay = ({ exams }: examProps) => {
+const Typingdisplay = () => {
   return (
     <div>
-      <li
-        key={exams.id}>
-          <span>{exams.text}</span>
-      </li>
+      <span>This is a pen.</span>
+      <textarea></textarea>
     </div>
   )
 }
