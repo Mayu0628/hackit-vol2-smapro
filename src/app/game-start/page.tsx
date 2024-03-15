@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import Select from '@/app/components/GameScreen/Quiz/QuizData'
-import Timescount from '@/app/components/playGame/Timescount'
 import Answercount from '../components/playGame/Answercount'
 import Typingdisplay from '../components/playGame/Typingdisplay'
 
@@ -31,7 +30,6 @@ const GameStart = () => {
       {isActive ? (
         <li>
           <Answercount />
-          <Timescount initialCount={40} />
           <Typingdisplay />
           <Select />
         </li>
