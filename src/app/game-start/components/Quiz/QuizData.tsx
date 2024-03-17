@@ -14,15 +14,11 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
   const [selectedOptionText, setSelectedOptionText] = useState('')
   const [showAnswer, setShowAnswer] = useState(false)
   const [quizOver, setQuizOver] = useState(false)
-  const [loding, setLoding] = useState(true)
-
-  useEffect(() => {
-    console.log('受け取ったquizData:', quizData)
-  }, [quizData])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (quizData.length > 0) {
-      setLoding(false)
+      setLoading(false)
     }
   }, [quizData])
 
@@ -60,14 +56,11 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
     )
   }
 
-  console.log('questions', quizData)
-
   const currentQuestion = quizData[currentQuestionIndex]
-  console.log('currentQuestion', currentQuestion)
 
   return (
     <div>
-      {loding ? (
+      {loading ? (
         <h1>Loading...</h1>
       ) : (
         <>

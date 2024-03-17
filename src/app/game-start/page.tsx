@@ -37,7 +37,7 @@ const GameStart = () => {
           console.log(data)
           setQuizData(data)
           setError('')
-        } catch (error) {
+        } catch (fetchError) {
           console.error('Error fetching questions:', error)
           setError('質問の取得中にエラーが発生しました。')
         }
