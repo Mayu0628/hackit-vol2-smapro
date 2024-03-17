@@ -5,7 +5,7 @@ const Typingdisplay = () => {
   
   const [word, setWord] = useState<string>('');
   const [input, setInput] = useState<string>('');
-  const [score, setScore] = useState<string>('');
+  const [score, setScore] = useState<number>(0);
   const [time, setTime] = useState<number>(40);
   const [gameover, setGameover] = useState<boolean>(false);
 
@@ -30,7 +30,7 @@ const Typingdisplay = () => {
    }, [time, gameover]);
 
    const generateNewWord = () => {
-    const newWord = 'This is a pen.';
+    const newWord = 'This is not a pen.';
     newWord
     setWord(newWord);
     setInput('');
@@ -39,18 +39,7 @@ const Typingdisplay = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = e.target.value;
     setInput(userInput);
-    let separateWord = word.split("");
     if (!gameover) {
-      for(let i=0; i<separateWord.length;i++){
-        if (userInput === separateWord[i]) {
-          document.getElementById("text")!.style.backgroundColor = "white";
-          setScore(score + 10);
-          generateNewWord();
-        }else {
-          document.getElementById("text")!.style.backgroundColor = "pink";
-          setTime(time -1);
-        }
-      }
       if (userInput === word) {
         generateNewWord();
       }
@@ -64,7 +53,18 @@ const Typingdisplay = () => {
       <p>Time: {time}</p>
       <p>Score: {score}</p>
       <h2>{word}</h2>
-      <input id="text" type="text" value={input} onChange={handleInputChange} />
+      {word.split("").map((char,index) => (
+      <input id="text" type="text" value={input} onChange={handleInputChange} 
+       key={index}
+       className={
+        index < input.length
+        ? input[index] === char
+          ? "correct"
+          : "incoreect"
+        : ""
+       }
+       />
+      ))}
     </div>
   )
 }
