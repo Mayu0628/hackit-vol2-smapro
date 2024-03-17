@@ -2,28 +2,34 @@
 import React from "react";
 import Popup from "./popup";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const Result = () => {
 
+  // 仮の答え
   const corrects = [
     {
       lang: "React",
-      bool: "◎"
+      bool: true
     },{
       lang: "Go",
-      bool: "✕"
+      bool: false
     }
-
   ]
+
+  // クエリパラメータ取り出し
+  const searchParams = useSearchParams();
+  const scor = searchParams.get("scor")
 
   return (
     <>
       <h1>results</h1>
+      <p>スコア:{scor}</p>
 
       {corrects.map((lang) => {
         return(
           <div className="langs">
-            <div>{lang.bool}</div>
+            <div>{lang.bool ? '◎' : '✕'}</div>
             <div>{lang.lang}</div>
             <Popup buttonLabel="解説"/>
           
