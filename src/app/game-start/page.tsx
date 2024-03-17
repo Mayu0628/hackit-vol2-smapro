@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { baseUrl } from '../config'
 import QuizData from './components/Quiz/QuizData'
+import TypingDisplay from './components/Typing/TypingDisplay'
 
 const GameStart = () => {
   const [isActive, setIsActive] = useState(false)
@@ -52,7 +53,10 @@ const GameStart = () => {
         error ? (
           <div>{error}</div>
         ) : (
-          <QuizData quizData={quizData} />
+          <>
+            {/* <QuizData quizData={quizData} /> */}
+            <TypingDisplay typingData={quizData} />
+          </>
         )
       ) : (
         <div>
