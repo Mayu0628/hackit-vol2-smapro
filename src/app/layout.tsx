@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { QuizDataProvider } from '@/app/context/QuizDataContext';
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <QuizDataProvider>
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
+    </QuizDataProvider>
   );
 }

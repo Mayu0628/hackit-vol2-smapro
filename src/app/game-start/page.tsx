@@ -4,10 +4,12 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { baseUrl } from '../config'
 import QuizData from './components/Quiz/QuizData'
+import { useQuizData } from '@/app/context/QuizDataContext'
+import { QuizDataProvider } from '../context/QuizDataContext';
 
 const GameStart = () => {
   const [isActive, setIsActive] = useState(false)
-  const [quizData, setQuizData] = useState([])
+  const { quizData, setQuizData } = useQuizData();
   const [error, setError] = useState('')
   const searchParams = useSearchParams()
   const difficulty = searchParams.get('difficulty')
@@ -48,6 +50,7 @@ const GameStart = () => {
 
   return (
     <div>
+    {/* <QuizDataProvider> */}
       {isActive ? (
         error ? (
           <div>{error}</div>
@@ -61,6 +64,7 @@ const GameStart = () => {
           {difficulty && <p>難易度: {difficulty}</p>}
         </div>
       )}
+      {/* </QuizDataProvider> */}
     </div>
   )
 }
