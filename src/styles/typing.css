@@ -1,3 +1,8 @@
+button {
+    position: relative;
+    z-index: 999;
+}
+
 .typeDis {
     margin: 60px auto 0;
     height: 350px;
@@ -5,7 +10,7 @@
     background-color: #ffffff;
     border-radius: 20px;
     position: relative;
-    z-index: 10;
+    z-index: 0;
 }
 
 .codeData {
@@ -16,20 +21,22 @@
     display: block;
     height: 290px;
     width: 450px;
-    line-height: 1.6em;
-    letter-spacing: 0.05em;
-    word-spacing: 0.4em;
+    line-height: 1.5em;
     color: gray;
-    z-index: auto;
 }
 
 .textField {
     position: absolute;
-    z-index: -1;
-    margin: 0 auto;
-    top: 200px;
-    height: 0;
-    width: 0;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: transparent;
+    border: none;
 }
 
 .correct {
