@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useGameData } from '../GameDataProvider'
 import Score from '../game-start/components/Score/Score'
+import '@/styles/global.css'
 
 const Result = () => {
   const { gamedata } = useGameData()

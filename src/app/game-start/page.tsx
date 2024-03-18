@@ -11,6 +11,7 @@ import { useGameData } from '../GameDataProvider'
 import '@/styles/game-start.css'
 import lion from '@/styles/images/lion.png'
 import Image from 'next/image'
+import '@/styles/global.css'
 
 const GameStart = () => {
   // カスタムフック
