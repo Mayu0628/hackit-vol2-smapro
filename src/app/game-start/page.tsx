@@ -92,6 +92,7 @@ const GameStart = () => {
           <div>{error}</div>
         ) : (
           <>
+            <Timer initialTime={10} isGameActive={!gameover} onGameover={handleGameover} />
             <TypingDisplay typingData={quizData} />
             <QuizData quizData={quizData} />
           </>
