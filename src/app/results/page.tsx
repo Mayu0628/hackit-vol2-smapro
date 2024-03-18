@@ -48,10 +48,10 @@ const Result = () => {
       })}
 
       <Link href='/'>
-        <button>ホームに戻る</button>
+        <button className='underBtn tohome'>ホームに戻る</button>
       </Link>
       <Link href='/course-selection'>
-        <button>コース選択</button>
+        <button className='underBtn toCourse'>コース選択</button>
       </Link>
     </div>
     </Suspense>

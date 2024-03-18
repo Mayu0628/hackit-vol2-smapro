@@ -14,14 +14,44 @@
     right: 0;
     left: 0;
     margin: auto;
-    width: 80%;
-    height: 70%;
-    background-color: aliceblue;
-    border-radius: 15px;
+    width: 500px;
+    height: 80%;
+    background-color: #ffff;
+    border: solid 10px #67C939;
+    border-radius: 20px;
     text-align: center;
+}
+
+.modal_text {
+    height: 84%;
+    width: 70%;
+    margin: 10px auto;
     overflow: scroll;
+    text-align: left;
+}
+
+.modal_text p {
+    font-weight: 500;
 }
 
 .codeblok {
-    background-color: rgb(143, 137, 137);
+    border-radius: 3px;
+    background-color: rgb(225, 223, 220);
+    
+    font-size: medium;
+    padding: 20px;
+}
+
+.closeBtn {
+    background-color: #67C939;
+    color: #ffff;
+    border-radius: 50px;
+    border: none;
+
+    height: 50px;
+    width: 150px;
+}
+
+.docLink {
+    color: rgb(76, 94, 207);
 }
