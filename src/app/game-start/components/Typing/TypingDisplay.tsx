@@ -96,6 +96,7 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
       {loading ? (
         <h1>Loading...</h1>
       ) : (
+        <>
         <div className='typeDis'>
           {/* <p>Time: {time}</p> */}
           {/* <p>Score: {score}</p> */}
@@ -106,8 +107,9 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
               </span>
             ))}
           </div>
-          <textarea onChange={handleInputChange} className='textField'></textarea>
         </div>
+        <textarea onChange={handleInputChange} className='textField' autoFocus/>
+        </>
       )}
     </div>
   )
