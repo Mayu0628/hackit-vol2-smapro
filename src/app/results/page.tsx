@@ -4,11 +4,13 @@ import Popup from './popup'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useGameData } from '../GameDataProvider'
-import Score from '../game-start/components/Score/Score'
+import Score from '../../utils/Score'
 
 const Result = () => {
   const { gamedata } = useGameData()
   console.log('gamedata:', gamedata)
+  const searchParams = useSearchParams()
+  const calculatedScore = searchParams.get('score')
 
   if (gamedata.length === 0) {
     return (
@@ -23,6 +25,7 @@ const Result = () => {
   return (
     <>
       <h1>results</h1>
+      <h2>スコア: {calculatedScore}</h2>
       {gamedata.map((lang, index) => {
         return (
           <div key={index}>
