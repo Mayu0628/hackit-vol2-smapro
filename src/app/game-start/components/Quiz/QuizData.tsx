@@ -18,6 +18,17 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
   const [quizOver, setQuizOver] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  const correctSound = new Audio('/audio/collectQuiz.mp3');
+  const wrongSound = new Audio('/audio/wrongQuiz.mp3');
+
+  const playSound = (isCorrect: boolean) => {
+    if (isCorrect) {
+      correctSound.play();
+    } else {
+      wrongSound.play();
+    }
+  };
+
   useEffect(() => {
     if (quizData.length > 0) {
       setLoading(false)
@@ -32,7 +43,9 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
 
   // 回答ボタンを押した時のレンダリング処理
   const handleAnswerButtonClick = () => {
-    setShowAnswer(true)
+    const isCorrect = selectedOptionText === quizData[currentQuestionIndex].techName;
+    playSound(isCorrect);
+    setShowAnswer(true);
 
     setTimeout(() => {
       setCurrentQuestionIndex((prevIndex) => {
