@@ -18,7 +18,7 @@ const Timer: React.FC<TimerProps> = ({ initialTime, isGameActive, onGameover }) 
     if (time > 0) {
       timer = setTimeout(() => setTime(time - 1), 1000)
     } else if (time === 0) {
-      timer = setTimeout(onGameover, 1000)
+      timer = setTimeout(onGameover, 2000)
     }
 
     return () => {
