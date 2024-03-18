@@ -4,7 +4,7 @@ import Popup from './popup'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useGameData } from '../GameDataProvider'
-import Score from '../../utils/Score'
+import '@/styles/global.css'
 
 const Result = () => {
   const { gamedata } = useGameData()
