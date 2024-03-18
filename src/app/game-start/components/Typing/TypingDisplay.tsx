@@ -24,14 +24,6 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
     const correctTypingSound = new Audio('/audio/typing-sound.mp3');
     const errorTypingSound = new Audio('/audio/wrong.mp3');
 
-    const playTypingSound = (isCorrect: boolean) => {
-      if (isCorrect) {
-        correctTypingSound.play();
-      } else {
-        errorTypingSound.play();
-      }
-    };
-
   // タイピングデータを配列で取得
   const currentTyping = typingData[currentTypingIndex]
 
@@ -76,7 +68,14 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
       }
     }
 
-    playTypingSound(isMatch);
+    // 正解か不正解かに応じて適切な音声を再生
+    if (isMatch) {
+      correctTypingSound.play();
+    } else {
+      errorTypingSound.pause();
+      errorTypingSound.currentTime = 0;
+      errorTypingSound.play();
+    }
 
     if (isMatch) {
       // 入力が一致する場合は許可
