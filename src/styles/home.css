@@ -17,7 +17,7 @@
     right: 0;
     bottom: 0;
     height: 17%;
-    background-color: #68BEDA;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 1) 100%);
     z-index: -1;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .logo-image {
-    margin: -60px 0 -20px;
+    margin: -60px 0 -33px;
 }
 
 .courseBtn {
@@ -76,14 +76,14 @@
 
 .subBtn {
     display: inline-block;
-    margin: 6px auto;
-    height: 60px;
+    margin: 5px auto;
+    height: 58px;
     width: 200px;
     border-radius: 50px;
     align-items: center;
 
     font-family: "Hiragino Sans","ヒラギノ角ゴシック";
-    font-weight: 800;
+    font-weight: 700;
     color: rgb(225, 224, 224);
     background-color: #300f0b;
 
