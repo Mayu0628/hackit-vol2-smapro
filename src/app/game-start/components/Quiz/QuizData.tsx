@@ -41,11 +41,10 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
   }
 
   const handleAnswerButtonClick = () => {
-    const isCorrect = selectedOptionText === quizData[currentQuestionIndex].techName;
-    playSound(isCorrect);
     setShowAnswer(true);
     const isCorrect = quizData[currentQuestionIndex].techName === selectedOptionText
     setAnswersResult([...answersResult, isCorrect])
+    playSound(isCorrect);
 
     setTimeout(() => {
       setCurrentQuestionIndex((prevIndex) => {
