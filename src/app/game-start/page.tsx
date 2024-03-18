@@ -9,7 +9,7 @@ import Timer from './components/Timer'
 import Link from 'next/link'
 import { useGameData } from '../GameDataProvider'
 import '@/styles/game-start.css'
-import lion from '@/styles/images/lion.png'
+import rule from '@/styles/images/rule.png'
 import Image from 'next/image'
 import '@/styles/global.css'
 
@@ -137,9 +137,9 @@ const GameStart = () => {
         // ゲーム開始前の表示
         <div>
           <Image
-            src={lion}
-            height={400}
-            width={700}
+            src={rule}
+            height={450}
+            // width={700}
             alt='説明画像'
             className='image'
           ></Image>
