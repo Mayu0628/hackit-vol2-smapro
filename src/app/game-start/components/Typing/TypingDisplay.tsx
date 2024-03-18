@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import Score from '../Score/Score'
+
 
 interface TypingDataProps {
   typingData: {
     sourceCode: string
   }[]
 }
+
 
 const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
   const [currentTypingIndex, setCurrentTypingIndex] = useState(0)
@@ -14,21 +17,9 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
 
   // const typeSound = new Audio('/public/assets/audio/typing-sound.mp3')
   // const errorSound = new Audio('/public/assets/audio/wrong.mp3')
-  // const [score, setScore] = useState<number>(0)
-  // const [time, setTime] = useState<number>(40)
+  //const [score, setScore] = useState<number>(0)
+  //const [time, setTime] = useState<number>(40)
   // const [gameover, setGameover] = useState<boolean>(false)
-
-  // useEffect(() => {
-  //   let timer: NodeJS.Timeout
-
-  // //   if (time > 0 && !gameover) {
-  // //     timer = setTimeout(() => {
-  // //       setTime(time - 1)
-  // //     }, 1000)
-  // //   } else if (time === 0 && !gameover) {
-  // //     setGameover(true)
-  // //     alert('ゲーム終了！')
-  // //   }
 
   // //   return () => clearTimeout(timer)
   // // }, [time, gameover])
@@ -77,6 +68,8 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
     if (isMatch) {
       // 入力が一致する場合は許可
       setInput(userInput)
+      setCurrentTypingIndex(currentTypingIndex + 1)
+      // TypingDisplay.tsx
     } else {
       console.log('Typing error!')
       // 一致しない場合は、入力フィールドを最後の正しい入力にリセット
@@ -97,8 +90,7 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        // {/* <p>Time: {time}</p>
-        // <p>Score: {score}</p> */}
+          // TypingDisplay.tsx
         <>
           <div style={{ whiteSpace: 'pre-wrap' }}>
             {typedText.map((char, index) => (

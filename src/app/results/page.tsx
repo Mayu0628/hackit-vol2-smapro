@@ -3,6 +3,7 @@ import React from "react";
 import Popup from "./popup";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import Score from "../game-start/components/Score/Score";
 
 const Result = () => {
 
@@ -24,7 +25,7 @@ const Result = () => {
   return (
     <>
       <h1>results</h1>
-      <p>スコア:{scor}</p>
+      <Score />
 
       {corrects.map((lang) => {
         return(

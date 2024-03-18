@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import Score from '../Score/Score'
 
 interface QuizDataProps {
   quizData: {
