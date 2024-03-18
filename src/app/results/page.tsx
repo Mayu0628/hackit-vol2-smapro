@@ -1,6 +1,5 @@
 'use client'
 
-import React from "react";
 import Popup from './popup'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
