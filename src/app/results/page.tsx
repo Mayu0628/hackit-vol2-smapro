@@ -26,7 +26,6 @@ const Result = () => {
       {gamedata.map((lang, index) => {
         return (
           <div key={index}>
-            <p>スコア:{scor}</p>
             <div>{lang.techName}</div>
             <div>{lang.id}</div>
             <Popup buttonLabel='解説' />
