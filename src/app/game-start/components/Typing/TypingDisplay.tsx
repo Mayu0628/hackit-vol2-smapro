@@ -21,11 +21,15 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
   const [gameover, setGameover] = useState<boolean>(false)
 
     // タイプ音のAudioオブジェクトを作成
-    const typingSound = new Audio('/audio/typing-sound.mp3');
+    const correctTypingSound = new Audio('/audio/typing-sound.mp3');
+    const errorTypingSound = new Audio('/audio/wrong.mp3');
 
-    // タイプ音を再生する関数
-    const playTypingSound = () => {
-      typingSound.play();
+    const playTypingSound = (isCorrect: boolean) => {
+      if (isCorrect) {
+        correctTypingSound.play();
+      } else {
+        errorTypingSound.play();
+      }
     };
 
   // タイピングデータを配列で取得
@@ -62,7 +66,6 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
 
   // タイピンゲームの入力処理
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    playTypingSound();
     const userInput = e.target.value
 
     let isMatch = true
@@ -72,6 +75,8 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
         break
       }
     }
+
+    playTypingSound(isMatch);
 
     if (isMatch) {
       // 入力が一致する場合は許可
