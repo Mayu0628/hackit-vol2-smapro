@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '@/styles/typing.css'
 
 interface TypingDataProps {
   typingData: {
@@ -99,14 +100,14 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
       ) : (
         // {/* <p>Time: {time}</p>
         // <p>Score: {score}</p> */}
-        <>
-          <div style={{ whiteSpace: 'pre-wrap' }}>
+        <div className='typeDis'>
+          <div style={{ whiteSpace: 'pre-wrap' }} className='codeData'>
             {typedText.map((char, index) => (
-              <span key={index}>{char}</span>
+              <span key={index} className={input[index] === char ? "correct" : ""}>{char}</span>
             ))}
           </div>
-          <textarea onChange={handleInputChange}></textarea>
-        </>
+          <textarea onChange={handleInputChange} className='textField'></textarea>
+        </div>
       )}
     </div>
   )

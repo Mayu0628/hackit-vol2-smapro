@@ -8,7 +8,7 @@ body {
     margin: auto;
 }
 
-button {
+.courseBtn {
     display: inline-block;
     margin: 10px auto;
     height: 80px;

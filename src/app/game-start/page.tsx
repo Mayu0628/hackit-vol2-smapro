@@ -36,7 +36,7 @@ const GameStart = () => {
     if (isActive && difficulty) {
       const fetchQuestions = async () => {
         try {
-          const response = await fetch(`${baseUrl}?difficulty=${difficulty}&limit=2`)
+          const response = await fetch(`${baseUrl}?difficulty=${difficulty}&limit=1`)
           const data = await response.json()
           console.log(data)
           setQuizData(data)
@@ -57,8 +57,8 @@ const GameStart = () => {
           <div>{error}</div>
         ) : (
           <>
-            {/* <QuizData quizData={quizData} /> */}
             <TypingDisplay typingData={quizData} />
+            <QuizData quizData={quizData} />
           </>
         )
       ) : (
