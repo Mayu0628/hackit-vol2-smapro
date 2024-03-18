@@ -6,8 +6,8 @@
     align-items: center;
     overflow: hidden;
 
-    position: relative; /* 疑似要素の基準点 */
-    overflow: visible; /* 斜めの色が画面外にも見えるように */
+    position: relative;
+    overflow: visible;
 }
 
 .container::after {
@@ -16,9 +16,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 17%; /* 要素の高さの30% */
-    background-color: #68BEDA; /* 好きな色 */
-    z-index: -1; /* 他の要素より下に配置する */
+    height: 17%;
+    background-color: #68BEDA;
+    z-index: -1;
 }
 
 .main-container {
