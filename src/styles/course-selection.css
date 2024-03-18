@@ -44,7 +44,7 @@ button {
 .hard {
     background-color: #F9F3F1;
     border-color: #F6815C;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .toTitle {
@@ -52,7 +52,6 @@ button {
     color: #1D1E22;
     text-decoration: none;
     align-items: center;
-    margin-top: 15px;
     font-weight: 600;
 }
 
