@@ -124,11 +124,7 @@ const GameStart = () => {
               updateCountTyping={setCountTyping}
               currentGameIndex={currentGameIndex}
             />
-            <QuizData
-              quizData={quizData}
-              setQuestionResults={setQuestionResults}
-              currentGameIndex={currentGameIndex}
-            />
+            <QuizData quizData={quizData} setQuestionResults={setQuestionResults} />
           </>
         )
       ) : gameover ? (
