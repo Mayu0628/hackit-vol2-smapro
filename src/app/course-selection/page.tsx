@@ -1,20 +1,23 @@
 import React from 'react'
 import Link from 'next/link'
+import '../styles/course-selection.css'
 
 const CourseSelection = () => {
   return (
-    <>
-      <div>CourseSelection</div>
+    <div className='page'>
+      <div className='title'>コース選択</div>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'easy'} }}>
-        <button>easy</button>
+        <button className='easy'>EASY</button>
       </Link>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'normal'} }}>
-        <button>nomal</button>
+        <button className='normal'>NORMAL</button>
       </Link>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'hard'} }}>
-        <button>hard</button>
+        <button className='hard'>HARD</button>
       </Link>
-    </>
+
+      <Link href={'/'} className='toTitle'>◀タイトルに戻る</Link>
+    </div>
   )
 }
 
