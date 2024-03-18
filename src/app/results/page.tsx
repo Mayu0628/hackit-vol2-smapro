@@ -1,52 +1,51 @@
 'use client'
-import React from "react";
-import Popup from "./popup";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+
+import Popup from './popup'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { useGameData } from '../GameDataProvider'
 
 const Result = () => {
-
-  // 仮の答え
-  const corrects = [
-    {
-      lang: "React",
-      bool: true
-    },{
-      lang: "Go",
-      bool: false
-    }
-  ]
-
   // クエリパラメータ取り出し
-  const searchParams = useSearchParams();
-  const scor = searchParams.get("scor")
+  const searchParams = useSearchParams()
+  const scor = searchParams.get('scor')
+
+  const { gamedata } = useGameData()
+  console.log('gamedata:', gamedata)
+
+  // const currentQuestion = gamedata[gameDataIndex]
 
   return (
     <>
       <h1>results</h1>
-      <p>スコア:{scor}</p>
-
-      {corrects.map((lang) => {
-        return(
-          <div className="langs">
-            <div>{lang.bool ? '◎' : '✕'}</div>
-            <div>{lang.lang}</div>
-            <Popup buttonLabel="解説"/>
-          
+      {gamedata.map((lang, index) => {
+        return (
+          <div key={index}>
+            <p>スコア:{scor}</p>
+            <div>{lang.techName}</div>
+            <div>{lang.id}</div>
+            <Popup buttonLabel='解説' />
+            <div></div>
             <style jsx>{`
-              .langs{
-                display: flex
+              .langs {
+                display: flex;
               }
             `}</style>
           </div>
         )
       })}
 
-      <Link href='/'><button>ホームに戻る</button></Link>
-      <Link href='/course-selection'><button>コース選択</button></Link>
-      <Link href='/game-start'><button>もう一度</button></Link>
+      <Link href='/'>
+        <button>ホームに戻る</button>
+      </Link>
+      <Link href='/course-selection'>
+        <button>コース選択</button>
+      </Link>
+      <Link href='/game-start'>
+        <button>もう一度</button>
+      </Link>
     </>
-  );
-};
+  )
+}
 
 export default Result
