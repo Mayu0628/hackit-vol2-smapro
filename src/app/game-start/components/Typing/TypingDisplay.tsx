@@ -6,10 +6,10 @@ interface TypingDataProps {
   typingData: {
     sourceCode: string
   }[]
-  updateCouuntTyping: (count: number) => void
+  updateCountTyping: (count: number) => void
 }
 
-const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCouuntTyping }) => {
+const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTyping }) => {
   const [currentTypingIndex, setCurrentTypingIndex] = useState(0)
   const [typedText, setTypedText] = useState<string[]>([])
   const [input, setInput] = useState('')
@@ -64,7 +64,7 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCouuntTypi
     if (isMatch) {
       // 入力が一致する場合は許可
       setInput(userInput)
-      updateCouuntTyping(userInput.length)
+      updateCountTyping(userInput.length)
     } else {
       console.log('Typing error!')
       // 一致しない場合は、入力フィールドを最後の正しい入力にリセット

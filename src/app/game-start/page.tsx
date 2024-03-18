@@ -118,7 +118,7 @@ const GameStart = () => {
               isGameActive={!gameover}
               onGameover={handleGameover}
             />
-            <TypingDisplay typingData={quizData} updateCouuntTyping={setCountTyping} />
+            <TypingDisplay typingData={quizData} updateCountTyping={setCountTyping} />
             <QuizData quizData={quizData} />
           </>
         )
