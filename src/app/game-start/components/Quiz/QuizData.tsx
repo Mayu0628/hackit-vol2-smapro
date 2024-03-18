@@ -82,7 +82,7 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <>
+        <div className='quizBtns'>
           <div>
             {currentQuestion.options.map((option, index) => (
               <button
@@ -103,7 +103,7 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
           <button onClick={handleAnswerButtonClick} className='answerBtn'>
             回答
           </button>
-        </>
+        </div>
       )}
     </div>
   )

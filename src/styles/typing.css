@@ -1,6 +1,7 @@
-button {
+.quizBtns button {
     position: relative;
     z-index: 999;
+    
 }
 
 .typeDis {
