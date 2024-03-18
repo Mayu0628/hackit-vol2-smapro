@@ -13,6 +13,16 @@ const Result = () => {
   const { gamedata } = useGameData()
   console.log('gamedata:', gamedata)
 
+  if (gamedata.length === 0) {
+    return (
+      <div>
+        <Link href='/'>
+          <button>ホームに戻る</button>
+        </Link>
+      </div>
+    )
+  }
+
   // const currentQuestion = gamedata[gameDataIndex]
 
   return (
