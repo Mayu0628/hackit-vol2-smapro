@@ -25,7 +25,7 @@ export default function Home() {
       <div className='sub-container'>
         <Image
             src={catImage}
-            height={500}
+            height={530}
             alt='cat-image'
             className='cat-image'
         ></Image>
