@@ -4,12 +4,9 @@ import Popup from './popup'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useGameData } from '../GameDataProvider'
+import Score from '../game-start/components/Score/Score'
 
 const Result = () => {
-  // クエリパラメータ取り出し
-  const searchParams = useSearchParams()
-  const scor = searchParams.get('scor')
-
   const { gamedata } = useGameData()
   console.log('gamedata:', gamedata)
 
@@ -23,8 +20,6 @@ const Result = () => {
     )
   }
 
-  // const currentQuestion = gamedata[gameDataIndex]
-
   return (
     <>
       <h1>results</h1>
@@ -35,12 +30,6 @@ const Result = () => {
             <div>{lang.techName}</div>
             <div>{lang.id}</div>
             <Popup buttonLabel='解説' />
-            <div></div>
-            <style jsx>{`
-              .langs {
-                display: flex;
-              }
-            `}</style>
           </div>
         )
       })}
