@@ -1,0 +1,57 @@
+body {
+    background-color: #E9F8FF;
+    text-align: center;
+}
+
+.page {
+    width: 400px;
+    margin: auto;
+}
+
+button {
+    display: inline-block;
+    margin: 10px auto;
+    height: 80px;
+    width: 400px;
+    border: solid 15px;
+    border-radius: 50px;
+    align-items: center;
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+    font-weight: 900;
+    font-size: larger;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.title {
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+    font-weight: 1000;
+    font-size: larger;
+    margin-top: 80px;
+}
+
+.easy {
+    background-color: #F9FBFE;
+    border-color: #68BFFE;
+    margin-top: 50px;
+}
+
+.normal {
+    background-color: #F8F6EE;
+    border-color: #FFC700;
+}
+
+.hard {
+    background-color: #F9F3F1;
+    border-color: #F6815C;
+    margin-bottom: 30px;
+}
+
+.toTitle {
+    display: block;
+    color: #1D1E22;
+    text-decoration: none;
+    align-items: center;
+    font-weight: 600;
+}
+

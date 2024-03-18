@@ -7,6 +7,9 @@ import QuizData from './components/Quiz/QuizData'
 import TypingDisplay from './components/Typing/TypingDisplay'
 import Timer from './components/Timer'
 import Link from 'next/link'
+import '@/styles/game-start.css'
+import lion from '@/styles/images/lion.png'
+import Image from 'next/image'
 
 const GameStart = () => {
   // スペースキーの状態を管理
@@ -113,9 +116,9 @@ const GameStart = () => {
       ) : (
         // ゲーム開始前の表示
         <div>
-          <p>説明</p>
+          <Image src={lion} height={400} width={700} alt="説明画像" className='image'></Image>
           <p>spaceキーを押して開始</p>
-          {difficulty && <p>難易度: {difficulty}</p>}
+          {/* {difficulty && <p>難易度: {difficulty}</p>} */}
         </div>
       )}
     </div>
