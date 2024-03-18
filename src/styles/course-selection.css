@@ -21,6 +21,7 @@ button {
     font-size: larger;
     text-decoration: none;
     cursor: pointer;
+    box-shadow: 1px 3px 2px rgba(110, 100, 150, 0.6);
 }
 
 .title {
