@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import './gemeRoules.css'
+import '@/styles/global.css'
 
 type ModalProps = {
     buttonLabel: string
