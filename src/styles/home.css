@@ -5,6 +5,20 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    position: relative; /* 疑似要素の基準点 */
+    overflow: visible; /* 斜めの色が画面外にも見えるように */
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 17%; /* 要素の高さの30% */
+    background-color: #68BEDA; /* 好きな色 */
+    z-index: -1; /* 他の要素より下に配置する */
 }
 
 .main-container {
@@ -22,19 +36,20 @@
     position: fixed;
     right: 0;
     bottom: 0;
-    max-height: 100vh; /* 画面の高さを超えないようにする */
+    max-height: 100vh;
+    z-index: 10;
 }
 
 .logo-image {
-    margin: -35px;
+    margin: -60px 0 -20px;
 }
 
 .courseBtn {
     display: inline-block;
     margin: 10px auto;
 
-    height: 80px;
-    width: 280px;
+    height: 73px;
+    width: 250px;
 
     border: solid 6px;
     border-radius: 50px;

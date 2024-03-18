@@ -13,7 +13,7 @@ export default function Home() {
       <div className='main-container'>
       <Image
             src={logo}
-            height={400}
+            height={360}
             alt='cat-image'
             className='logo-image'
         ></Image>
@@ -25,7 +25,7 @@ export default function Home() {
       <div className='sub-container'>
         <Image
             src={catImage}
-            height={530}
+            height={540}
             alt='cat-image'
             className='cat-image'
         ></Image>
