@@ -8,13 +8,13 @@ const CourseSelection = () => {
     <div className='page'>
       <div className='title'>コース選択</div>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'easy'} }}>
-        <button className='easy'>EASY</button>
+        <button className="easy courseBtn">EASY</button>
       </Link>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'normal'} }}>
-        <button className='normal'>NORMAL</button>
+        <button className='normal courseBtn'>NORMAL</button>
       </Link>
       <Link href={{ pathname: '/game-start', query: {difficulty: 'hard'} }}>
-        <button className='hard'>HARD</button>
+        <button className='hard courseBtn'>HARD</button>
       </Link>
 
       <Link href={'/'} className='toTitle'>◀タイトルに戻る</Link>

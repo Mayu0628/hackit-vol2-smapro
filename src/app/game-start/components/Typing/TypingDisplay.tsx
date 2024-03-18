@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
+import '@/styles/typing.css'
 
 interface TypingDataProps {
   typingData: {
@@ -15,38 +17,21 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
   // const typeSound = new Audio('/public/assets/audio/typing-sound.mp3')
   // const errorSound = new Audio('/public/assets/audio/wrong.mp3')
   // const [score, setScore] = useState<number>(0)
-  // const [time, setTime] = useState<number>(40)
-  // const [gameover, setGameover] = useState<boolean>(false)
+  const [time, setTime] = useState<number>(10)
+  const [gameover, setGameover] = useState<boolean>(false)
 
-  // useEffect(() => {
-  //   let timer: NodeJS.Timeout
+  useEffect(() => {
+    let timer: NodeJS.Timeout
 
-  // //   if (time > 0 && !gameover) {
-  // //     timer = setTimeout(() => {
-  // //       setTime(time - 1)
-  // //     }, 1000)
-  // //   } else if (time === 0 && !gameover) {
-  // //     setGameover(true)
-  // //     alert('ゲーム終了！')
-  // //   }
+    if (time > 0 && !gameover) {
+      timer = setTimeout(() => {
+        setTime(time - 1)
+      }, 1000)
+    } else if (time === 0 && !gameover) {
+    }
 
-  // //   return () => clearTimeout(timer)
-  // // }, [time, gameover])
-
-  // const generateNewWord = () => {
-  //   const newWord = 'This is not a pen.'
-  //   setTypedText(newWord)
-  // }
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const userInput = e.target.value
-  //   setInput(userInput)
-  //   if (!gameover) {
-  //     if (userInput === word) {
-  //       generateNewWord()
-  //     }
-  //   }
-  // }
+    return () => clearTimeout(timer)
+  }, [time, gameover])
 
   useEffect(() => {
     if (typingData.length > 0) {
@@ -92,21 +77,33 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData }) => {
     }
   }
 
+  // ゲーム終了時の画面表示を追加
+  if (gameover) {
+    return (
+      <div>
+        <h2>ゲーム終了！</h2>
+        <Link href='/results'>
+          <button>結果へ</button>
+        </Link>
+      </div>
+    )
+  }
+
   return (
     <div>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        // {/* <p>Time: {time}</p>
-        // <p>Score: {score}</p> */}
-        <>
-          <div style={{ whiteSpace: 'pre-wrap' }}>
+        <div className='typeDis'>
+          {/* <p>Time: {time}</p> */}
+          {/* <p>Score: {score}</p> */}
+          <div style={{ whiteSpace: 'pre-wrap' }} className='codeData'>
             {typedText.map((char, index) => (
-              <span key={index}>{char}</span>
+              <span key={index} className={input[index] === char ? "correct" : ""}>{char}</span>
             ))}
           </div>
-          <textarea onChange={handleInputChange}></textarea>
-        </>
+          <textarea onChange={handleInputChange} className='textField'></textarea>
+        </div>
       )}
     </div>
   )

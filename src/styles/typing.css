@@ -1,0 +1,45 @@
+.typeDis {
+    margin: 60px auto 0;
+    height: 350px;
+    width: 600px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.codeData {
+    position: absolute;
+    top: 30px;
+    left: 75px;
+    text-align: left;
+    display: block;
+    height: 290px;
+    width: 450px;
+    line-height: 1.5em;
+    color: gray;
+}
+
+/* .textField {
+    display: none;
+} */
+
+.correct {
+    color: black;
+}
+
+.choicesBtn {
+    height: 50px;
+    width: 120px;
+    border-radius: 50px;
+    border: solid 8px #D9D9D9;
+    margin: 20px 10px;
+}
+
+.answerBtn {
+    height: 50px;
+    width: 100px;
+    border: none;
+    background-color: #9981F8;
+    color: aliceblue;
+    border-radius: 6px;
+}
