@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -9,14 +7,16 @@ interface QuizDataProps {
     options: string[]
     techName: string
   }[]
+  setQuestionResults: (results: boolean[]) => void
 }
 
-const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
+const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedOptionText, setSelectedOptionText] = useState('')
   const [showAnswer, setShowAnswer] = useState(false)
   const [quizOver, setQuizOver] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [answersResult, setAnswersResult] = useState<boolean[]>([])
 
   useEffect(() => {
     if (quizData.length > 0) {
@@ -24,15 +24,15 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
     }
   }, [quizData])
 
-  // 回答ボタンを押した時の処理
   const handleOptionClick = (optionText: string) => {
     setSelectedOptionText(optionText)
     setShowAnswer(false)
   }
 
-  // 回答ボタンを押した時のレンダリング処理
   const handleAnswerButtonClick = () => {
     setShowAnswer(true)
+    const isCorrect = quizData[currentQuestionIndex].techName === selectedOptionText
+    setAnswersResult([...answersResult, isCorrect])
 
     setTimeout(() => {
       setCurrentQuestionIndex((prevIndex) => {
@@ -59,6 +59,10 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
   }
 
   const currentQuestion = quizData[currentQuestionIndex]
+
+  console.log('正誤', answersResult)
+
+  setQuestionResults(answersResult)
 
   return (
     <div>
