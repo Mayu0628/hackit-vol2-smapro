@@ -16,7 +16,7 @@ const GameRules: React.FC<ModalProps> = (props) => {
 
     return (
         <>
-            <button onClick={toggleModal}>
+            <button onClick={toggleModal} className="subBtn">
                 {props.buttonLabel}
             </button>
             {isOpen && (
