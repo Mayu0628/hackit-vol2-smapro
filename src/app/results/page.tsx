@@ -3,8 +3,11 @@ import React from "react";
 import Popup from "./popup";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useQuizData } from '@/app/context/QuizDataContext'
 
 const Result = () => {
+  const { quizData, setQuizData } = useQuizData();
+  console.log(quizData);
 
   // 仮の答え
   const corrects = [
@@ -32,7 +35,7 @@ const Result = () => {
             <div>{lang.bool ? '◎' : '✕'}</div>
             <div>{lang.lang}</div>
             <Popup buttonLabel="解説"/>
-          
+
             <style jsx>{`
               .langs{
                 display: flex
