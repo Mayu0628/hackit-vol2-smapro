@@ -56,7 +56,7 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
       })
       setSelectedOptionText('')
       setShowAnswer(false)
-    }, 5000)
+    }, 1000)
   }
 
   if (quizOver) {
