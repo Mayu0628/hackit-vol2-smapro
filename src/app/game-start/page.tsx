@@ -105,6 +105,7 @@ const GameStart = () => {
 
   console.log('スコア', score)
   console.log('タイプ数', countTyping)
+  console.log('正誤1', questionResults)
 
   return (
     <div>
@@ -119,7 +120,7 @@ const GameStart = () => {
               onGameover={handleGameover}
             />
             <TypingDisplay typingData={quizData} updateCountTyping={setCountTyping} />
-            <QuizData quizData={quizData} />
+            <QuizData quizData={quizData} setQuestionResults={setQuestionResults} />
           </>
         )
       ) : gameover ? (
