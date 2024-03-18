@@ -2,7 +2,6 @@
 import React from "react";
 import Popup from "./popup";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import Score from "../game-start/components/Score/Score";
 
 const Result = () => {
@@ -17,15 +16,12 @@ const Result = () => {
       bool: false
     }
   ]
-
-  // クエリパラメータ取り出し
-  const searchParams = useSearchParams();
-  const scor = searchParams.get("scor")
-
   return (
     <>
       <h1>results</h1>
-      <Score />
+      <div>
+      スコア:<Score/>
+      </div>
 
       {corrects.map((lang) => {
         return(
