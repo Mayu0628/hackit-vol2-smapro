@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import '../styles/course-selection.css'
+import '@/styles/course-selection.css'
 
 const CourseSelection = () => {
   return (
