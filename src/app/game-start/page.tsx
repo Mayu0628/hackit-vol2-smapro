@@ -156,12 +156,12 @@ function calculateScore(
   // 初期値
   let score = 0
   // タイピングの計算
-  score = currentTyping * 100
+  score = currentTyping * 10
   // クイズ回答の計算
   const questionScore = {
-    easy: 500,
-    normal: 1000,
-    hard: 1500,
+    easy: 100,
+    normal: 200,
+    hard: 300,
   }
   // questionResultsのtrueの数を数える
   const correctAnswers = questionResults.filter((isCorrect) => isCorrect).length
