@@ -4,7 +4,6 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import '@/styles/typing.css'
 
-
 interface TypingDataProps {
   typingData: {
     sourceCode: string
@@ -102,16 +101,10 @@ const TypingDisplay: React.FC<TypingDataProps> = ({
   }
 
   // ゲーム終了時の画面表示を追加
-  if (gameover) {
-    return (
-      <div>
-        <h2>ゲーム終了！</h2>
-        <Link href='/results'>
-          <button>結果へ</button>
-        </Link>
-      </div>
-    )
-  }
+  // 次の問題への更新時にテキストエリアをクリア
+  useEffect(() => {
+    setInput('') // inputステートをクリア
+  }, [currentGameIndex])
 
   return (
     <div>
@@ -130,7 +123,12 @@ const TypingDisplay: React.FC<TypingDataProps> = ({
               ))}
             </div>
           </div>
-          <textarea onChange={handleInputChange} className='textField' autoFocus />
+          <textarea
+            onChange={handleInputChange}
+            value={input}
+            className='textField'
+            autoFocus
+          />
         </>
       )}
     </div>
