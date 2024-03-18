@@ -18,6 +18,17 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
   const [loading, setLoading] = useState(true)
   const [answersResult, setAnswersResult] = useState<boolean[]>([])
 
+  const correctSound = new Audio('/audio/collectQuiz.mp3');
+  const wrongSound = new Audio('/audio/wrongQuiz.mp3');
+
+  const playSound = (isCorrect: boolean) => {
+    if (isCorrect) {
+      correctSound.play();
+    } else {
+      wrongSound.play();
+    }
+  };
+
   useEffect(() => {
     if (quizData.length > 0) {
       setLoading(false)
@@ -30,7 +41,9 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => 
   }
 
   const handleAnswerButtonClick = () => {
-    setShowAnswer(true)
+    const isCorrect = selectedOptionText === quizData[currentQuestionIndex].techName;
+    playSound(isCorrect);
+    setShowAnswer(true);
     const isCorrect = quizData[currentQuestionIndex].techName === selectedOptionText
     setAnswersResult([...answersResult, isCorrect])
 

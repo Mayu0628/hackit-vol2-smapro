@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import '@/styles/typing.css'
 
+
 interface TypingDataProps {
   typingData: {
     sourceCode: string
@@ -18,6 +19,10 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
   const [loading, setLoading] = useState(true)
   const [time, setTime] = useState<number>(10)
   const [gameover, setGameover] = useState<boolean>(false)
+
+    // タイプ音のAudioオブジェクトを作成
+    const correctTypingSound = new Audio('/audio/typing-sound.mp3');
+    const errorTypingSound = new Audio('/audio/wrong.mp3');
 
   // タイピングデータを配列で取得
   const currentTyping = typingData[currentTypingIndex]
@@ -61,6 +66,15 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
         isMatch = false
         break
       }
+    }
+
+    // 正解か不正解かに応じて適切な音声を再生
+    if (isMatch) {
+      correctTypingSound.play();
+    } else {
+      errorTypingSound.pause();
+      errorTypingSound.currentTime = 0;
+      errorTypingSound.play();
     }
 
     if (isMatch) {
