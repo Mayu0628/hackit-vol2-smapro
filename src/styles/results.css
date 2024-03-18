@@ -1,7 +1,62 @@
 .result {
     text-align: center;
+    align-items: center;
+
+    margin: 60px auto 0;
+    height: 400px;
+    width: 600px;
+    background-color: #68BFFE;
+    border-radius: 20px;
+
+    position: relative;
+    z-index: 1;
+}
+
+.anderBox {
+    text-align: center;
+    align-items: center;
+
+    height: 270px;
+    width: 600px;
+    background-color: #ffff;
+    border-radius: 0 0 20px 20px;
+
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
 }
 
 .answer {
     display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+    height: 35px;
+    width: 200px;
+    margin: 10px auto;
+}
+
+.explainBtn {
+    background-color: #67C939;
+    color: #ffff;
+    border-radius: 10px;
+    border: none;
+
+    height: 35px;
+    width: 80px;
+}
+
+.underBtn {
+    background-color: #9981F8;
+    color: #ffff;
+    border-radius: 10px;
+    border: none;
+
+    /* position: absolute;
+    bottom: -80px; */
+
+    display: inline-block;
+    height: 50px;
+    width: 250px;
+    margin: 20px 10px;
 }

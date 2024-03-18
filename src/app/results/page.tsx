@@ -24,32 +24,36 @@ const Result = () => {
   }
 
   return (
-    <div className='result'>
-      <h1>results</h1>
-      <h2>スコア: {calculatedScore}</h2>
-      {gamedata.map((lang, index) => {
-        return (
-          <div key={index} className='answer'>
-            <div className='lang'>{lang.techName}</div>
-            <div>{lang.id}</div>
-            <Popup 
-              buttonLabel='解説'
-              techName={lang.techName}
-              techDesc={lang.techDesc}
-              sourceCode={lang.sourceCode}
-              codeDesc={lang.codeDesc}
-              result={lang.result}
-              docLink={lang.docLink}
-            />
-          </div>
-        )
-      })}
+    <div>
+      <div className='result'>
+        <h1>results</h1>
+        <h2>スコア: {calculatedScore}</h2>
+        <div className='anderBox'>
+          {gamedata.map((lang, index) => {
+            return (
+              <div key={index} className='answer'>
+                <div className='lang'>{lang.techName}</div>
+                <div>{lang.id}</div>
+                <Popup 
+                  buttonLabel='解説'
+                  techName={lang.techName}
+                  techDesc={lang.techDesc}
+                  sourceCode={lang.sourceCode}
+                  codeDesc={lang.codeDesc}
+                  result={lang.result}
+                  docLink={lang.docLink}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
 
       <Link href='/'>
-        <button>ホームに戻る</button>
+        <button className='underBtn tohome'>ホームに戻る</button>
       </Link>
       <Link href='/course-selection'>
-        <button>コース選択</button>
+        <button className='underBtn toCourse'>コース選択</button>
       </Link>
     </div>
   )

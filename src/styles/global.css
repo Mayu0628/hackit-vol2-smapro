@@ -10,3 +10,7 @@ body {
     /* font */
     color: #1D1E22;
 }
+
+button {
+    cursor: pointer;
+}
