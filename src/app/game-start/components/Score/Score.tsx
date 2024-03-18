@@ -8,6 +8,7 @@ interface ScoreProps {
     SelectCourse?: string;
   }
   
+//以下、スコア計算
 
 const Score: React.FC<ScoreProps> = ({ currentTyping=0 ,currentQuestion=[false], SelectCourse="normal"}) => {
     let Scor = 0;
