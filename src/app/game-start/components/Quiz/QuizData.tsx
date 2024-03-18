@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -9,14 +7,27 @@ interface QuizDataProps {
     options: string[]
     techName: string
   }[]
+  setQuestionResults: (results: boolean[]) => void
 }
 
-const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
+const QuizData: React.FC<QuizDataProps> = ({ quizData, setQuestionResults }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedOptionText, setSelectedOptionText] = useState('')
   const [showAnswer, setShowAnswer] = useState(false)
   const [quizOver, setQuizOver] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [answersResult, setAnswersResult] = useState<boolean[]>([])
+
+  const correctSound = new Audio('/audio/collectQuiz.mp3');
+  const wrongSound = new Audio('/audio/wrongQuiz.mp3');
+
+  const playSound = (isCorrect: boolean) => {
+    if (isCorrect) {
+      correctSound.play();
+    } else {
+      wrongSound.play();
+    }
+  };
 
   useEffect(() => {
     if (quizData.length > 0) {
@@ -24,15 +35,16 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
     }
   }, [quizData])
 
-  // 回答ボタンを押した時の処理
   const handleOptionClick = (optionText: string) => {
     setSelectedOptionText(optionText)
     setShowAnswer(false)
   }
 
-  // 回答ボタンを押した時のレンダリング処理
   const handleAnswerButtonClick = () => {
-    setShowAnswer(true)
+    setShowAnswer(true);
+    const isCorrect = quizData[currentQuestionIndex].techName === selectedOptionText
+    setAnswersResult([...answersResult, isCorrect])
+    playSound(isCorrect);
 
     setTimeout(() => {
       setCurrentQuestionIndex((prevIndex) => {
@@ -59,6 +71,10 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
   }
 
   const currentQuestion = quizData[currentQuestionIndex]
+
+  console.log('正誤', answersResult)
+
+  setQuestionResults(answersResult)
 
   return (
     <div>
