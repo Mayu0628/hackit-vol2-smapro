@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { baseUrl } from '../config'
 import QuizData from './components/Quiz/QuizData'
 import TypingDisplay from './components/Typing/TypingDisplay'
@@ -26,8 +26,12 @@ const GameStart = () => {
   const [error, setError] = useState('')
   // 現在の問題のインデックスを管理
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  // 回答の状態を管理
+  // 正誤の状態を管理
   const [questionResults, setQuestionResults] = useState<boolean[]>([])
+  // タイピング数の状態を管理
+  const [countTyping, setCountTyping] = useState(0)
+
+  const router = useRouter()
 
   // URLパラメータから難易度を取得
   const searchParams = useSearchParams()
@@ -79,12 +83,28 @@ const GameStart = () => {
     }
   }
 
-  const onAnswerButtonClick = () => {
-    const isCorrect = true
-    handleNextQuestion(isCorrect)
+  console.log('正誤', questionResults)
+
+  const [score, setScore] = useState(0)
+  // 結果画面へボタンを押し、スコアの計算処理
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //　型ガード
+    if (!difficulty || !['easy', 'normal', 'hard'].includes(difficulty)) {
+      console.error('Invalid difficulty')
+      return
+    }
+
+    const calculatedScore = calculateScore(
+      countTyping,
+      difficulty as 'easy' | 'normal' | 'hard',
+      questionResults,
+    )
+    setScore(calculatedScore)
+    router.push(`/results?score=${calculatedScore}`)
   }
 
-  console.log('正誤', questionResults)
+  console.log('スコア', score)
+  console.log('タイプ数', countTyping)
 
   return (
     <div>
@@ -93,8 +113,12 @@ const GameStart = () => {
           <div>{error}</div>
         ) : (
           <>
-            <Timer initialTime={10} isGameActive={!gameover} onGameover={handleGameover} />
-            <TypingDisplay typingData={quizData} />
+            <Timer
+              initialTime={10}
+              isGameActive={!gameover}
+              onGameover={handleGameover}
+            />
+            <TypingDisplay typingData={quizData} updateCountTyping={setCountTyping} />
             <QuizData quizData={quizData} />
           </>
         )
@@ -102,9 +126,7 @@ const GameStart = () => {
         // ゲーム終了時の表示
         <div>
           <h2>ゲーム終了！</h2>
-          <Link href='/results'>
-            <button>結果画面へ</button>
-          </Link>
+          <button onClick={handleButtonClick}>結果画面へ</button>
         </div>
       ) : (
         // ゲーム開始前の表示
@@ -125,3 +147,26 @@ const GameStart = () => {
 }
 
 export default GameStart
+
+function calculateScore(
+  currentTyping: number,
+  difficulty: 'easy' | 'normal' | 'hard', // ここでdifficultyの型を具体化
+  questionResults: boolean[],
+): number {
+  // 初期値
+  let score = 0
+  // タイピングの計算
+  score = currentTyping * 100
+  // クイズ回答の計算
+  const questionScore = {
+    easy: 500,
+    normal: 1000,
+    hard: 1500,
+  }
+  // questionResultsのtrueの数を数える
+  const correctAnswers = questionResults.filter((isCorrect) => isCorrect).length
+
+  // 正解数に基づいてスコアを加算
+  score += correctAnswers * questionScore[difficulty]
+  return score
+}
