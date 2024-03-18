@@ -75,12 +75,13 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
                     ? { backgroundColor: 'lightgreen', color: 'white' }
                     : {}),
                 }}
+                className='choicesBtn'
               >
                 {option}
               </button>
             ))}
           </div>
-          <button onClick={handleAnswerButtonClick}>回答</button>
+          <button onClick={handleAnswerButtonClick} className='answerBtn'>回答</button>
         </>
       )}
     </div>

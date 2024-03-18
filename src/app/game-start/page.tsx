@@ -92,21 +92,8 @@ const GameStart = () => {
           <div>{error}</div>
         ) : (
           <>
-            <Timer
-              initialTime={10}
-              isGameActive={!gameover}
-              onGameover={handleGameover}
-            />
-            <QuizData
-              quizData={quizData}
-              // currentQuestionIndex={currentQuestionIndex}
-              // onAnswerSelected={handleNextQuestion}
-            />
-            <TypingDisplay
-              typingData={quizData}
-              // currentTypingIndex={currentQuestionIndex}
-            />
-            <button onClick={onAnswerButtonClick}>回答</button>
+            <TypingDisplay typingData={quizData} />
+            <QuizData quizData={quizData} />
           </>
         )
       ) : gameover ? (
