@@ -8,6 +8,7 @@ import TypingDisplay from './components/Typing/TypingDisplay'
 import '@/styles/game-start.css'
 import lion from '@/styles/images/lion.png'
 import Image from 'next/image'
+import '@/styles/global.css'
 
 const GameStart = () => {
   const [isActive, setIsActive] = useState(false)

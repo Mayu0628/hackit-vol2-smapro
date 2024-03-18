@@ -4,6 +4,7 @@ import Popup from "./popup";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Score from "../game-start/components/Score/Score";
+import '@/styles/global.css'
 
 const Result = () => {
 
@@ -26,8 +27,8 @@ const Result = () => {
     <h1>results</h1>
     <p>スコア:<Score/></p>
     </div>
-      
-      
+
+
 
       {corrects.map((lang) => {
         return(
@@ -35,7 +36,7 @@ const Result = () => {
             <div>{lang.bool ? '◎' : '✕'}</div>
             <div>{lang.lang}</div>
             <Popup buttonLabel="解説"/>
-          
+
             <style jsx>{`
               .langs{
                 display: flex
