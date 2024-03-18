@@ -25,7 +25,7 @@ const GameStart = () => {
   // エラーメッセージの状態を管理
   const [error, setError] = useState('')
   // 現在の問題のインデックスを管理
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [currentGameIndex, setCurrentGameIndex] = useState(0)
   // 正誤の状態を管理
   const [questionResults, setQuestionResults] = useState<boolean[]>([])
   // タイピング数の状態を管理
@@ -73,16 +73,6 @@ const GameStart = () => {
     setGameover(true)
   }
 
-  // 回答が正しいかを判断し、次の問題に移動する処理
-  const handleNextQuestion = (isCorrect: boolean) => {
-    if (isCorrect) {
-      setQuestionResults((prevResults) => [...prevResults, isCorrect])
-      const nextIndex =
-        currentQuestionIndex + 1 < quizData.length ? currentQuestionIndex + 1 : 0
-      setCurrentQuestionIndex(nextIndex)
-    }
-  }
-
   console.log('正誤', questionResults)
 
   const [score, setScore] = useState(0)
@@ -107,6 +97,16 @@ const GameStart = () => {
   console.log('タイプ数', countTyping)
   console.log('正誤1', questionResults)
 
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(true)
+  console.log('ボタンを押したよ', isAnswerCorrect)
+
+  useEffect(() => {
+    // questionResultsが更新されるたびに呼び出される
+    const nextIndex = currentGameIndex + 1 < quizData.length ? currentGameIndex + 1 : 0
+    setCurrentGameIndex(nextIndex) // currentIndexを更新して次の問題に進む
+  }, [questionResults]) // questionResultsが変化したときにのみ実行
+
+  console.log('更新', currentGameIndex)
   return (
     <div>
       {isActive && !gameover ? (
@@ -119,7 +119,11 @@ const GameStart = () => {
               isGameActive={!gameover}
               onGameover={handleGameover}
             />
-            <TypingDisplay typingData={quizData} updateCountTyping={setCountTyping} />
+            <TypingDisplay
+              typingData={quizData}
+              updateCountTyping={setCountTyping}
+              currentGameIndex={currentGameIndex}
+            />
             <QuizData quizData={quizData} setQuestionResults={setQuestionResults} />
           </>
         )
