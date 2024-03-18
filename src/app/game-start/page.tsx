@@ -115,7 +115,7 @@ const GameStart = () => {
         ) : (
           <>
             <Timer
-              initialTime={10}
+              initialTime={30}
               isGameActive={!gameover}
               onGameover={handleGameover}
             />
