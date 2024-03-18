@@ -1,3 +1,8 @@
+button {
+    position: relative;
+    z-index: 999;
+}
+
 .typeDis {
     margin: 60px auto 0;
     height: 350px;
@@ -5,6 +10,7 @@
     background-color: #ffffff;
     border-radius: 20px;
     position: relative;
+    z-index: 0;
 }
 
 .codeData {
@@ -19,9 +25,19 @@
     color: gray;
 }
 
-/* .textField {
-    display: none;
-} */
+.textField {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+}
 
 .correct {
     color: black;
