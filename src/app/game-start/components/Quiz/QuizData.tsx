@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -81,7 +83,9 @@ const QuizData: React.FC<QuizDataProps> = ({ quizData }) => {
               </button>
             ))}
           </div>
-          <button onClick={handleAnswerButtonClick} className='answerBtn'>回答</button>
+          <button onClick={handleAnswerButtonClick} className='answerBtn'>
+            回答
+          </button>
         </>
       )}
     </div>
