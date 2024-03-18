@@ -40,6 +40,15 @@
     z-index: 10;
 }
 
+.cat-foot {
+    position: fixed;
+    padding: 20px 25px;
+    left: 0;
+    top: 0;
+    max-height: 100vh;
+    z-index: 10;
+}
+
 .logo-image {
     margin: -60px 0 -20px;
 }
