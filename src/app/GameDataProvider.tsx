@@ -1,13 +1,50 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, ReactNode } from 'react'
 
-const GameDataContext = createContext([])
+// contextの型を定義
+interface GameData {
+  gamedata: {
+    id: number
+    difficulty: string
+    sourceCode: string
+    techName: string
+    techDesc: string
+    codeDesc: string
+    result: string
+    docLink: string
+  }[]
+  setGameData: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number
+        difficulty: string
+        sourceCode: string
+        techName: string
+        techDesc: string
+        codeDesc: string
+        result: string
+        docLink: string
+      }[]
+    >
+  >
+}
+
+// createContextの型を正確に指定
+const GameDataContext = createContext<GameData>({
+  gamedata: [], // 空の配列を初期値として設定
+  setGameData: () => {}, // 型を満たすための空関数
+})
 
 export const useGameData = () => useContext(GameDataContext)
 
-const GameDataProvider = ({ children }) => {
-  const [gamedata, setGameData] = useState({ id: 0, techName: 'a' })
+// childrenの型を定義
+interface GameDataProviderProps {
+  children: ReactNode
+}
+
+const GameDataProvider: React.FC<GameDataProviderProps> = ({ children }) => {
+  const [gamedata, setGameData] = useState<GameData['gamedata']>([])
 
   console.log('gamedata:', gamedata)
 
