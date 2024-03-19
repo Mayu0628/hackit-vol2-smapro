@@ -4,15 +4,19 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import '@/styles/typing.css'
 
-
 interface TypingDataProps {
   typingData: {
     sourceCode: string
   }[]
   updateCountTyping: (count: number) => void
+  currentGameIndex: number
 }
 
-const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTyping }) => {
+const TypingDisplay: React.FC<TypingDataProps> = ({
+  typingData,
+  updateCountTyping,
+  currentGameIndex,
+}) => {
   const [currentTypingIndex, setCurrentTypingIndex] = useState(0)
   const [typedText, setTypedText] = useState<string[]>([])
   const [input, setInput] = useState('')
@@ -20,12 +24,15 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
   const [time, setTime] = useState<number>(10)
   const [gameover, setGameover] = useState<boolean>(false)
 
-    // タイプ音のAudioオブジェクトを作成
-    const correctTypingSound = new Audio('/audio/typing-sound.mp3');
-    const errorTypingSound = new Audio('/audio/wrong.mp3');
+  // タイプ音のAudioオブジェクトを作成
+  const correctTypingSound = new Audio('/audio/typing-sound.mp3')
+  const errorTypingSound = new Audio('/audio/wrong.mp3')
 
   // タイピングデータを配列で取得
-  const currentTyping = typingData[currentTypingIndex]
+  const currentTyping = typingData[currentGameIndex]
+
+  const TY = typingData[currentGameIndex]
+  console.log(TY)
 
   // タイマーが終了した時の処理
   useEffect(() => {
@@ -70,11 +77,11 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
 
     // 正解か不正解かに応じて適切な音声を再生
     if (isMatch) {
-      correctTypingSound.play();
+      correctTypingSound.play()
     } else {
-      errorTypingSound.pause();
-      errorTypingSound.currentTime = 0;
-      errorTypingSound.play();
+      errorTypingSound.pause()
+      errorTypingSound.currentTime = 0
+      errorTypingSound.play()
     }
 
     if (isMatch) {
@@ -94,16 +101,10 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
   }
 
   // ゲーム終了時の画面表示を追加
-  if (gameover) {
-    return (
-      <div>
-        <h2>ゲーム終了！</h2>
-        <Link href='/results'>
-          <button>結果へ</button>
-        </Link>
-      </div>
-    )
-  }
+  // 次の問題への更新時にテキストエリアをクリア
+  useEffect(() => {
+    setInput('') // inputステートをクリア
+  }, [currentGameIndex])
 
   return (
     <div>
@@ -111,18 +112,23 @@ const TypingDisplay: React.FC<TypingDataProps> = ({ typingData, updateCountTypin
         <h1>Loading...</h1>
       ) : (
         <>
-        <div className='typeDis'>
-          {/* <p>Time: {time}</p> */}
-          {/* <p>Score: {score}</p> */}
-          <div style={{ whiteSpace: 'pre-wrap' }} className='codeData'>
-            {typedText.map((char, index) => (
-              <span key={index} className={input[index] === char ? 'correct' : ''}>
-                {char}
-              </span>
-            ))}
+          <div className='typeDis'>
+            {/* <p>Time: {time}</p> */}
+            {/* <p>Score: {score}</p> */}
+            <div style={{ whiteSpace: 'pre-wrap' }} className='codeData'>
+              {typedText.map((char, index) => (
+                <span key={index} className={input[index] === char ? 'correct' : ''}>
+                  {char}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-        <textarea onChange={handleInputChange} className='textField' autoFocus/>
+          <textarea
+            onChange={handleInputChange}
+            value={input}
+            className='textField'
+            autoFocus
+          />
         </>
       )}
     </div>
