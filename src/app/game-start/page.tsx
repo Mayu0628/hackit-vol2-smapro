@@ -131,7 +131,9 @@ const GameStart = () => {
         // ゲーム終了時の表示
         <div>
           <h2>ゲーム終了！</h2>
-          <button onClick={handleButtonClick}>結果画面へ</button>
+          <button onClick={handleButtonClick} className='courseBtn'>
+            結果画面へ
+          </button>
         </div>
       ) : (
         // ゲーム開始前の表示

@@ -20,3 +20,24 @@ p {
 .image {
     margin-top: 80px;
 }
+
+.courseBtn {
+    display: inline-block;
+    margin: 10px auto;
+
+    height: 73px;
+    width: 250px;
+
+    border: solid 6px;
+    border-radius: 50px;
+    align-items: center;
+
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+    font-weight: 800;
+    font-size: 25px;
+
+    background-color: #F4B62D;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 1px 3px 2px rgba(110, 100, 150, 0.6);
+}
