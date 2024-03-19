@@ -35,7 +35,7 @@ const Result = () => {
         <div className='answers'>
           {gamedata.map((lang, index) => {
             return (
-              <div key={index} className='answer'>
+              <div key={lang.id} className='answer'>
                 <div className='lang'>{lang.techName}</div>
                 <div>{lang.id}</div>
                 <Popup
