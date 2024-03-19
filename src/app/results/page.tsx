@@ -26,26 +26,33 @@ const Result = () => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
+    <div>
     <div className='result'>
-      <h1>results</h1>
-      <h2>スコア: {calculatedScore}</h2>
-      {gamedata.map((lang, index) => {
-        return (
-          <div key={index} className='answer'>
-            <div className='lang'>{lang.techName}</div>
-            <div>{lang.id}</div>
-            <Popup
-              buttonLabel='解説'
-              techName={lang.techName}
-              techDesc={lang.techDesc}
-              sourceCode={lang.sourceCode}
-              codeDesc={lang.codeDesc}
-              result={lang.result}
-              docLink={lang.docLink}
-            />
-          </div>
-        )
-      })}
+      {/* <h1>results</h1> */}
+      <p className='scor'>スコア</p>
+      <h1 className='numScor'>{calculatedScore}</h1>
+      <div className='anderBox'>
+        <div className='answers'>
+          {gamedata.map((lang, index) => {
+            return (
+              <div key={lang.id} className='answer'>
+                <div className='lang'>{lang.techName}</div>
+                <div>{lang.id}</div>
+                <Popup
+                  buttonLabel='解説'
+                  techName={lang.techName}
+                  techDesc={lang.techDesc}
+                  sourceCode={lang.sourceCode}
+                  codeDesc={lang.codeDesc}
+                  result={lang.result}
+                  docLink={lang.docLink}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
 
       <Link href='/'>
         <button className='underBtn tohome'>ホームに戻る</button>
